@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="News Website Performance Testing" enabled="true">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_variables"/>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <elementProp name="TestPlan.comments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="Comments" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="VnExpress - 500 Users" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <elementProp name="ThreadGroup.duration_seconds" elementType="stringProp">
+          <stringProp name="ThreadGroup.delay_seconds">0</stringProp>
+        </elementProp>
+        <longProp name="ThreadGroup.start_time">1234567890000</longProp>
+        <longProp name="ThreadGroup.end_time">1234567890000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - VnExpress Homepage" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">vnexpress.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_type">
+              <stringProp name="49586">Assertion.response_code</stringProp>
+            </collectionProp>
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.text_type">Regex</stringProp>
+            <stringProp name="Assertion.assume_success">false</stringProp>
+            <intProp name="Assertion.test_type">1</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Search" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="keyword" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">keyword</stringProp>
+                <stringProp name="Argument.value">news</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">vnexpress.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_type">
+              <stringProp name="49586">Assertion.response_code</stringProp>
+            </collectionProp>
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.text_type">Regex</stringProp>
+            <stringProp name="Assertion.assume_success">false</stringProp>
+            <intProp name="Assertion.test_type">1</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Zing News - 500 Users" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <elementProp name="ThreadGroup.duration_seconds" elementType="stringProp">
+          <stringProp name="ThreadGroup.delay_seconds">0</stringProp>
+        </elementProp>
+        <longProp name="ThreadGroup.start_time">1234567890000</longProp>
+        <longProp name="ThreadGroup.end_time">1234567890000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Zing News Homepage" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zingnews.vn</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_type">
+              <stringProp name="49586">Assertion.response_code</stringProp>
+            </collectionProp>
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.text_type">Regex</stringProp>
+            <stringProp name="Assertion.assume_success">false</stringProp>
+            <intProp name="Assertion.test_type">1</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <elementProp name="collectorProperties" elementType="CollectionProp">
+          <stringProp name="filename"></stringProp>
+        </elementProp>
+        <stringProp name="resultCollector.label"></stringProp>
+        <boolProp name="resultCollector.success_only">false</boolProp>
+        <boolProp name="resultCollector.child_samples">false</boolProp>
+        <stringProp name="resultCollector.save_config/time_stamp">true</stringProp>
+        <stringProp name="resultCollector.save_config/latency">true</stringProp>
+        <stringProp name="resultCollector.save_config/timestamp">true</stringProp>
+        <stringProp name="resultCollector.save_config/success">true</stringProp>
+        <stringProp name="resultCollector.save_config/label">true</stringProp>
+        <stringProp name="resultCollector.save_config/code">true</stringProp>
+        <stringProp name="resultCollector.save_config/message">true</stringProp>
+        <stringProp name="resultCollector.save_config/thread_count">true</stringProp>
+        <stringProp name="resultCollector.save_config/data_type">true</stringProp>
+        <stringProp name="resultCollector.save_config/encoding">false</stringProp>
+        <stringProp name="resultCollector.save_config/assertions">false</stringProp>
+        <stringProp name="resultCollector.save_config/subresults">false</stringProp>
+        <stringProp name="resultCollector.save_config/responseData">false</stringProp>
+        <stringProp name="resultCollector.save_config/samplerData">false</stringProp>
+        <stringProp name="resultCollector.save_config/xml">false</stringProp>
+        <stringProp name="resultCollector.save_config/fieldNames">true</stringProp>
+        <stringProp name="resultCollector.save_config/responseHeaders">false</stringProp>
+        <stringProp name="resultCollector.save_config/requestHeaders">false</stringProp>
+        <stringProp name="resultCollector.save_config/responseDataOnError">false</stringProp>
+        <stringProp name="resultCollector.save_config/errorDataOnError">false</stringProp>
+        <stringProp name="resultCollector.save_config/saveAssertionResultsFailureMessage">true</stringProp>
+        <intProp name="resultCollector.save_config/assertionsResultsToSave">0</intProp>
+        <boolProp name="resultCollector.save_config/bytes">true</boolProp>
+        <boolProp name="resultCollector.save_config/url">true</boolProp>
+        <boolProp name="resultCollector.save_config/fileName">true</boolProp>
+        <boolProp name="resultCollector.save_config/hostname">true</boolProp>
+        <boolProp name="resultCollector.save_config/connect_time">false</boolProp>
+        <boolProp name="resultCollector.save_config/sample_count">false</boolProp>
+        <boolProp name="resultCollector.save_config/idle_time">false</boolProp>
+        <boolProp name="resultCollector.save_config/in_use">false</boolProp>
+        <boolProp name="resultCollector.save_config/connect_time">false</boolProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

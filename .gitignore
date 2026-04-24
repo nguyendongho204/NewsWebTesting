@@ -1,0 +1,35 @@
+# Build folders
+bin/
+obj/
+.vs/
+.vscode/
+
+# Test Results
+TestResults/
+*.trx
+
+# NuGet
+packages/
+*.nupkg
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+
+# Build output
+out/
+dist/
